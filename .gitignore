@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env.local
+
+# Build outputs
+client/dist/
+
+# Environment files
+server/.env
+
+# Temporary files
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,42 @@
+services:
+  # 1. Python FastAPI ML Microservice
+  - type: web
+    name: noticia-ml-service
+    env: docker
+    dockerfilePath: ./ml-service/Dockerfile
+    dockerContext: ./ml-service
+    plan: free
+    region: oregon
+    envVars:
+      - key: PORT
+        value: 8000
+
+  # 2. Node.js Express API Server + Socket.IO
+  - type: web
+    name: noticia-api-server
+    env: node
+    plan: free
+    region: oregon
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: SERVICE_KEY
+        generateValue: true
+      - key: GROQ_API_KEY
+        sync: false
+      - key: ML_SERVICE_URL
+        fromService:
+          type: web
+          name: noticia-ml-service
+          property: host
+      - key: CLIENT_URL
+        sync: false

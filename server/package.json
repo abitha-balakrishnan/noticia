@@ -1,0 +1,25 @@
+{
+  "name": "noticia-server",
+  "version": "1.0.0",
+  "description": "Noticia SIEM - Backend API Layer with Real-Time Alerting, ML Detection Orchestration, and Grounded RAG Chat",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "simulate": "node scripts/simulateLogs.js",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.9",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.5",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^6.9.16",
+    "socket.io": "^4.8.1",
+    "zod": "^3.24.1"
+  }
+}
